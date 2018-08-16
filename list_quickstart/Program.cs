@@ -7,11 +7,20 @@ namespace list_quickstart
     {
         static void Main()
         {
+            ListOfStrings.Call();
+        }
+    }
+
+    class ListOfStrings
+    {
+        public static void Call()
+        {
             var names = SimpleList();
             AddAndRemoveFromList(names);
             PrintItemsByReference(names);
             CountItemsInList(names);
             SearchList(names);
+            SortList(names);
         }
 
         static List<string> SimpleList()
@@ -73,6 +82,17 @@ namespace list_quickstart
             return index == -1 ?
                 $"When an item is not found, IndexOf returns {index}" :
                 $"The name {names[index]} is at index {index}";
+        }
+
+        static void SortList(List<string> names)
+        {
+            Console.WriteLine();
+
+            names.Sort();
+            foreach (var name in names)
+            {
+                Console.WriteLine($"Hello {name.ToUpper()}!");
+            }
         }
     }
 }
