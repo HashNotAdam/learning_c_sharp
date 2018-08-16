@@ -9,6 +9,7 @@ namespace list_quickstart
         {
             var names = SimpleList();
             AddAndRemoveFromList(names);
+            PrintItemsByReference(names);
         }
 
         static List<string> SimpleList()
@@ -37,6 +38,14 @@ namespace list_quickstart
             }
 
             return names;
+        }
+
+        static void PrintItemsByReference(List<string> names)
+        {
+            Console.WriteLine(
+                $"\nMy name is {names[0]}" +
+                $"\nI've added {names[2]} and {names[3]} to the list"
+            );
         }
     }
 }
