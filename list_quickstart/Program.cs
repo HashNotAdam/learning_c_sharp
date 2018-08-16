@@ -11,6 +11,7 @@ namespace list_quickstart
             AddAndRemoveFromList(names);
             PrintItemsByReference(names);
             CountItemsInList(names);
+            SearchList(names);
         }
 
         static List<string> SimpleList()
@@ -52,6 +53,26 @@ namespace list_quickstart
         static void CountItemsInList(List<string> names)
         {
             Console.WriteLine($"\nThe list has {names.Count} people in it");
+        }
+
+        static void SearchList(List<string> names)
+        {
+            Console.WriteLine();
+
+            var searches = new List<string> { "Felipe", "Not Found" };
+            foreach (var search in searches)
+            {
+                var index = names.IndexOf(search);
+                var message = SearchMessage(names, index);
+                Console.WriteLine(message);
+            }
+        }
+
+        static string SearchMessage(List<string> names, int index)
+        {
+            return index == -1 ?
+                $"When an item is not found, IndexOf returns {index}" :
+                $"The name {names[index]} is at index {index}";
         }
     }
 }
