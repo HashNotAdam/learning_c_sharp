@@ -10,6 +10,7 @@ namespace list_quickstart
             var names = SimpleList();
             AddAndRemoveFromList(names);
             PrintItemsByReference(names);
+            CountItemsInList(names);
         }
 
         static List<string> SimpleList()
@@ -46,6 +47,11 @@ namespace list_quickstart
                 $"\nMy name is {names[0]}" +
                 $"\nI've added {names[2]} and {names[3]} to the list"
             );
+        }
+
+        static void CountItemsInList(List<string> names)
+        {
+            Console.WriteLine($"\nThe list has {names.Count} people in it");
         }
     }
 }
