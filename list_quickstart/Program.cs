@@ -5,94 +5,32 @@ namespace list_quickstart
 {
     class Program
     {
+        private static string asterisk = "******************************";
+
         static void Main()
         {
-            ListOfStrings.Call();
-        }
-    }
-
-    class ListOfStrings
-    {
-        public static void Call()
-        {
-            var names = SimpleList();
-            AddAndRemoveFromList(names);
-            PrintItemsByReference(names);
-            CountItemsInList(names);
-            SearchList(names);
-            SortList(names);
+            WriteClassName("ListOfStrings");
+            new ListOfStrings().Call();
+            WriteSpaceAndClassName("ListOfIntegers");
+            new ListOfIntegers().Call();
         }
 
-        static List<string> SimpleList()
+        private static void WriteClassName(string ClassName)
         {
-            var names = new List<string> { "Adam", "Ana", "Felipe" };
-
-            foreach (var name in names)
-            {
-                Console.WriteLine($"Hello {name.ToUpper()}!");
-            }
-
-            return names;
+            Console.WriteLine(asterisk);
+            Console.WriteLine(ClassName);
+            Console.WriteLine($"{asterisk}\n");
         }
 
-        static List<string> AddAndRemoveFromList(List<string> names)
+        private static void WriteSpaceAndClassName(string ClassName)
         {
-            Console.WriteLine();
-
-            names.Add("Maria");
-            names.Add("Bill");
-            names.Remove("Ana");
-
-            foreach (var name in names)
-            {
-                Console.WriteLine($"Hello {name.ToUpper()}!");
-            }
-
-            return names;
+            WriteSpace();
+            WriteClassName(ClassName);
         }
 
-        static void PrintItemsByReference(List<string> names)
+        private static void WriteSpace()
         {
-            Console.WriteLine(
-                $"\nMy name is {names[0]}" +
-                $"\nI've added {names[2]} and {names[3]} to the list"
-            );
-        }
-
-        static void CountItemsInList(List<string> names)
-        {
-            Console.WriteLine($"\nThe list has {names.Count} people in it");
-        }
-
-        static void SearchList(List<string> names)
-        {
-            Console.WriteLine();
-
-            var searches = new List<string> { "Felipe", "Not Found" };
-            foreach (var search in searches)
-            {
-                var index = names.IndexOf(search);
-                var message = SearchMessage(names, index);
-                Console.WriteLine(message);
-            }
-        }
-
-        static string SearchMessage(List<string> names, int index)
-        {
-            return index == -1 ?
-                $"When an item is not found, IndexOf returns {index}" :
-                $"The name {names[index]} is at index {index}";
-        }
-
-        static void SortList(List<string> names)
-        {
-            Console.WriteLine();
-
-            names.Sort();
-            foreach (var name in names)
-            {
-                Console.WriteLine($"Hello {name.ToUpper()}!");
-            }
+            Console.WriteLine("\n\n");
         }
     }
 }
